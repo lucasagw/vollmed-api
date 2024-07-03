@@ -1,13 +1,13 @@
-package med.voll.api.patient;
+package med.voll.api.domain.doctor;
 
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
-import med.voll.api.address.AddressData;
-import org.hibernate.validator.constraints.br.CPF;
+import jakarta.validation.constraints.Pattern;
+import med.voll.api.domain.address.AddressData;
 
-public record PatientRegistrationData(
+public record DoctorRegistrationData(
 
         @NotBlank
         String name,
@@ -20,8 +20,11 @@ public record PatientRegistrationData(
         String phone,
 
         @NotBlank
-        @CPF
-        String cpf,
+        @Pattern(regexp = "\\d{4,6}")
+        String crm,
+
+        @NotNull
+        Specialty specialty,
 
         @NotNull
         @Valid

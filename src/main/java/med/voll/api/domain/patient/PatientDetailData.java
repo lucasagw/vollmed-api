@@ -1,6 +1,6 @@
-package med.voll.api.patient;
+package med.voll.api.domain.patient;
 
-import med.voll.api.address.Address;
+import med.voll.api.domain.address.Address;
 
 public record PatientDetailData(Long id, String name, String email, String phone, String cpf, Address address, boolean active) {
 

@@ -1,19 +1,19 @@
-package med.voll.api.doctor;
+package med.voll.api.domain.patient;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.EqualsAndHashCode;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import med.voll.api.address.Address;
+import med.voll.api.domain.address.Address;
 
 @Entity
-@Table(name = "doctors")
+@Table(name = "patients")
 @Getter
 @NoArgsConstructor
 @AllArgsConstructor
 @EqualsAndHashCode(of = "id")
-public class Doctor {
+public class Patient {
 
 
     @Id
@@ -22,27 +22,22 @@ public class Doctor {
     private String name;
     private String email;
     private String phone;
-    private String crm;
-
-    @Enumerated(EnumType.STRING)
-    private Specialty specialty;
+    private String cpf;
 
     @Embedded
     private Address address;
 
     private boolean active;
 
-    public Doctor(DoctorRegistrationData dads) {
+    public Patient(PatientRegistrationData dads) {
         this.active = true;
         this.name = dads.name();
         this.email = dads.email();
         this.phone = dads.phone();
-        this.crm = dads.crm();
-        this.specialty = dads.specialty();
         this.address = new Address(dads.address());
     }
 
-    public void updateData(DoctorUpdateData dads) {
+    public void updateData(PatientUpdateData dads) {
 
         if (dads.name() != null) {
             this.name = dads.name();
