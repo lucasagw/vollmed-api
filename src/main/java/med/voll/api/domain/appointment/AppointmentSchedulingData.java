@@ -19,9 +19,5 @@ public record AppointmentSchedulingData(
         @NotNull
         LocalDateTime date,
 
-        Specialty specialty,
-
-        String time,
-
-        String description) {
+        Specialty specialty) {
 }

@@ -34,6 +34,7 @@ public class Patient {
         this.name = dads.name();
         this.email = dads.email();
         this.phone = dads.phone();
+        this.cpf = dads.cpf();
         this.address = new Address(dads.address());
     }
 
